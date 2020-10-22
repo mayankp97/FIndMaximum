@@ -33,5 +33,15 @@ namespace FindMaximumTests
             Assert.That(result, Is.EqualTo(max));
         }
 
+        [Test]
+        [TestCase("Apple", "Banana", "Peach", "Peach")]
+        [TestCase("Peach", "Banana", "Apple", "Peach")]
+        [TestCase("Banana", "Peach", "Apple", "Peach")]
+        public void MaximumstringNumber_WhenCalled_ReturnsMaximumstring(string string1, string string2, string string3, string max)
+        {
+            var result = MaximumNumberCheck.MaximumString(string1, string2, string3);
+
+            Assert.That(result, Is.EqualTo(max));
+        }
     }
 }
