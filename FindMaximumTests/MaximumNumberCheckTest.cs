@@ -22,5 +22,16 @@ namespace FindMaximumTests
             Assert.That(result, Is.EqualTo(max));
         }
 
+        [Test]
+        [TestCase(1.1, 2.2, 3.3, 3.3)]
+        [TestCase(1.1, 3.3, 2.2, 3.3)]
+        [TestCase(3.3, 1.1, 2.2, 3.3)]
+        public void MaximumdoubleNumber_WhenCalled_ReturnsMaximumdouble(double double1, double double2, double double3, double max)
+        {
+            var result = MaximumNumberCheck.MaximumFloatNumber(double1, double2, double3);
+
+            Assert.That(result, Is.EqualTo(max));
+        }
+
     }
 }
