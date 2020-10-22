@@ -6,32 +6,28 @@ namespace FindMaximum
 {
     public class GenericMaximum<T> where T : IComparable
     {
-        public T firstValue { get; set; }
-        public T secondValue { get; set; }
-        public T thirdValue { get; set; }
-
-        public GenericMaximum(T firstValue, T secondValue, T thirdValue)
+        public T[] value;
+        public GenericMaximum(params T[] value)
         {
-            this.firstValue = firstValue;
-            this.secondValue = secondValue;
-            this.thirdValue = thirdValue;
+            this.value = value;
+        }
+
+        public T[] Sort(T[] values)
+        {
+            Array.Sort(values);
+            return values;
+        }
+        public T MaxValue(params T[] values)
+        {
+            var sorted_values = Sort(values);
+
+            return sorted_values[sorted_values.Length - 1];
         }
 
         public T Max()
         {
-            if (firstValue.CompareTo(secondValue) > 0 && firstValue.CompareTo(thirdValue) > 0)
-            {
-                return firstValue;
-            }
-            if (secondValue.CompareTo(firstValue) > 0 && secondValue.CompareTo(thirdValue) > 0)
-            {
-                return secondValue;
-            }
-            if (thirdValue.CompareTo(firstValue) > 0 && thirdValue.CompareTo(secondValue) > 0)
-            {
-                return thirdValue;
-            }
-            throw new Exception("firstNumber,secondNumber and thirdNumber are same");
+            var max = MaxValue(this.value);
+            return max;
         }
     }
 }
